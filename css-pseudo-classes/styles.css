@@ -1,0 +1,19 @@
+.button {
+  background-color: rgb(245 245 245);
+  padding: 7px;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+thead {
+  background-color: black;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: lightgrey;
+}
