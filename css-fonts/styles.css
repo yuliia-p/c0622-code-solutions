@@ -1,8 +1,9 @@
-body {
+h1, p {
   font-family: 'Montserrat', sans-serif;
   line-height: 20px;
 }
 
 h2 {
+  font-family: 'Montserrat', sans-serif;
   font-style: italic;
 }
