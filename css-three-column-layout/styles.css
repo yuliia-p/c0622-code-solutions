@@ -11,10 +11,6 @@ body {
   font-style: normal;
   text-align: center;
   color: white;
-
-  /* justify-content: space-around; */
-
-  /* justify-content: center; */
 }
 
 .row {
@@ -38,6 +34,7 @@ p {
 }
 
 .circle {
+  display: flex;
   background-color: white;
   border-radius: 50%;
   width: 130px;
@@ -52,6 +49,9 @@ p {
 .image {
   width: 80px;
   height: 80px;
-  position: absolute;
-  margin-top: 24px;
+  justify-content: center;
+  margin: auto;
+
+  /* position: absolute;
+  margin-top: 24px; */
 }
