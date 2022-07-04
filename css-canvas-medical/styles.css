@@ -1,0 +1,188 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.contact-info {
+  background-color: #525351;
+  padding: 30px;
+  display: flex;
+}
+
+.footer {
+  display: flex;
+  background-color: #fafafa;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  text-align: right;
+  gap: 30px;
+}
+
+.text-format-grey {
+  font-family: Avenir, sans-serif;
+  color: #525351;
+}
+
+.text-format-white {
+  font-family: Avenir, sans-serif;
+  color: white;
+  line-height: 7px;
+  font-size: 0.9rem;
+}
+
+.logo {
+  max-width: 40%;
+  margin-bottom: 30px;
+  margin-top: 15px;
+}
+
+.column-two-fourths {
+  flex-basis: calc(100% / 2);
+}
+
+div.column-three-fourth > p {
+  font-size: 0.9rem;
+  text-align: left;
+  line-height: 20px;
+}
+
+div.column-two-fourths > p {
+  font-size: 0.8rem;
+}
+
+.column-one-fourth {
+  flex-basis: calc(100% / 4);
+  line-height: 20px;
+  margin-left: 50px;
+}
+
+div.column-one-fourth > h3 {
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+
+div.column-one-fourth > p {
+  line-height: 20px;
+}
+
+.get-started {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 30px;
+}
+
+.h3-grey-style {
+  font-family: "Tiempos Headline", sans-serif;
+  font-size: 1.6rem;
+  color: #6e6e6e;
+}
+
+.button {
+  background-color: #2a4463;
+  color: white;
+  padding: 15px 35px;
+  border-radius: 3px;
+  border: 0;
+}
+
+div.column-half > p {
+  font-size: 0.8rem;
+}
+
+div.column-half > h3 {
+  margin: auto;
+}
+
+.location {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fafafa;
+  padding-bottom: 30px;
+}
+
+div.column-half.clinic-locations > p {
+  font-size: 0.9rem;
+}
+
+.centered {
+  display: flex;
+  background-color: #fafafa;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 30px;
+}
+
+div.row.centered > p {
+  text-align: center;
+  padding: 0 120px;
+  font-size: 00.8rem;
+}
+
+div.row.centered > h3 {
+  margin: auto;
+}
+
+.header-white {
+  font-family: "Tiempos Headline", sans-serif;
+  color: white;
+  font-size: 1.9rem;
+}
+
+.hero-pic {
+  display: flex;
+  flex-wrap: wrap;
+  background-image: linear-gradient(transparent, rgb(0 0 0 / 75%)), url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 30px;
+  padding: 40px;
+  height: 100%;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+div.column-three-fourth > h2 {
+  margin: 0;
+}
+
+.text-align {
+  flex-basis: 65%;
+}
+
+.button-hero {
+  padding: 20px 0;
+  flex-basis: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #e0e0e0 solid 1px;
+  margin: 15px;
+  font-size: 0.8rem;
+  padding-bottom: 17px;
+}
+
+.blue-logo {
+  flex-basis: 30%;
+  max-width: 60%;
+}
+
+.one-tenth {
+  text-align: center;
+}
+
+div.one-tenth > a {
+  margin-top: 20px;
+}
+
+.center-text {
+  padding-top: 10px;
+}
