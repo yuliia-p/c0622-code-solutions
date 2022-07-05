@@ -1,0 +1,12 @@
+var fullName = 'Yuliia Pchelintseva';
+var isCool = true;
+var totalPets = 0;
+console.log('My name is ', fullName);
+console.log('I am cool', isCool);
+console.log('I have ', totalPets, ' pets');
+const unknown = null;
+console.log('Value of null: ', unknown);
+console.log('Type of null: ', typeof unknown);
+let never;
+console.log('Value of never: ', never);
+console.log('Type of never:', typeof never);
