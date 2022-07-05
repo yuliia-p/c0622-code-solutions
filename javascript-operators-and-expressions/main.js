@@ -34,6 +34,6 @@ console.log('Sparta had 300 soldiers in the battle of Thermopylae: ', isSparta);
 console.log('Type of headCount is: ', typeof isSparta);
 
 var motto = fullName;
-motto = fullName + ' is the GOAT';
+motto += ' is the GOAT';
 console.log('The value of moto now is:', motto);
 console.log('Type of motto is: ', typeof motto);
