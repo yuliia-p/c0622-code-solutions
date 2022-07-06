@@ -14,8 +14,6 @@
 .flex {
   margin-left: 0;
   flex-basis: 50%;
-
-  /* padding: 8px 20px; */
 }
 
 body {
@@ -35,12 +33,12 @@ h3 {
   text-transform: uppercase;
 }
 
-h1 {
+.column-full {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
-div.row-header > p {
+div.column-full > p {
   text-align: center;
 }
 
