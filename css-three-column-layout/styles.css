@@ -1,6 +1,11 @@
 .container {
   max-width: 800px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row {
+  display: flex;
 }
 
 body {
@@ -11,10 +16,6 @@ body {
   color: white;
 }
 
-.row {
-  display: flex;
-}
-
 .header {
   justify-content: center;
   padding-top: 40px;
@@ -23,14 +24,16 @@ body {
 
 .flex {
   flex-basis: calc(100% / 3);
-  margin: 15px;
+  margin: 10px 30px;
+  justify-content: center;
+  text-align: -webkit-center;
 }
 
 p {
   text-align: center;
   color: rgb(206 211 216);
-  line-height: 1.4rem;
-  font-size: 15px;
+  line-height: 1.2rem;
+  font-size: 13px;
   margin: 8px 0 0;
   letter-spacing: 0.4px;
 }
@@ -43,14 +46,9 @@ p {
   height: 100px;
 }
 
-.avatar {
-  justify-content: center;
-  display: flex;
-}
-
 .image {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   justify-content: center;
   margin: auto;
 }
