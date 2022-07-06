@@ -1,15 +1,30 @@
 .container {
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 
 .row {
   display: flex;
 }
 
-.column-size {
-  width: 25%;
+.column-fourth {
+  flex-basis: 25%;
+}
+
+.column-third {
+  flex-basis: calc(100% / 3);
+}
+
+.column-two-thirds {
+  flex-basis: 75%;
+}
+
+div.column-fourth {
+  flex-basis: 25%;
+}
+
+div.column-third > img {
+  width: 100%;
 }
 
 div.column-fourth > img {
