@@ -7,16 +7,24 @@
   display: flex;
 }
 
+.column-full {
+  flex-basis: 100%;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.column-fourth {
+  flex-basis: 25%;
+}
+
 body {
   font-family: Barlow, sans-serif;
 }
 
 h1 {
   font-size: 1.2rem;
-}
-
-.header {
-  justify-content: center;
 }
 
 .image {
