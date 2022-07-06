@@ -1,0 +1,41 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+body {
+  font-family: Barlow, sans-serif;
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+
+.header {
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+}
+
+.icon {
+  width: 20%;
+}
+
+.icon-text {
+  text-align: center;
+}
+
+.bold-font-style {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.text {
+  font-size: 0.7rem;
+}
