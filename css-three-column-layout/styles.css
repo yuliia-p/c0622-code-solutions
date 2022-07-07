@@ -1,7 +1,6 @@
 .container {
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 
 .row {
@@ -16,17 +15,18 @@ body {
   color: white;
 }
 
-.header {
+.column-full {
   justify-content: center;
   padding-top: 40px;
   letter-spacing: 1px;
 }
 
-.flex {
+.column-third {
   flex-basis: calc(100% / 3);
+}
+
+.centered-content {
   margin: 10px 30px;
-  justify-content: center;
-  text-align: -webkit-center;
 }
 
 p {
@@ -46,11 +46,13 @@ p {
   height: 100px;
 }
 
+.margin {
+  margin: auto;
+}
+
 .image {
   width: 50px;
   height: 50px;
-  justify-content: center;
-  margin: auto;
 }
 
 div.column-third > h2 {
