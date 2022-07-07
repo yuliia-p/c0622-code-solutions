@@ -49,9 +49,7 @@ function categorizeAcidity(pH) {
 
 var catchPhrase = ' ';
 function introduceWarnerBro(name) {
-  if (name === 'yakko') {
-    catchPhrase = "We're the warner brothers!";
-  } else if (name === 'wakko') {
+  if ((name === 'yakko') || (name === 'wakko')) {
     catchPhrase = "We're the warner brothers!";
   } else if (name === 'dot') {
     catchPhrase = "I'm cute~";
