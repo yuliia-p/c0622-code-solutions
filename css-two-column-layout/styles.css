@@ -7,13 +7,25 @@
   display: flex;
 }
 
+.column-full {
+  flex-basis: 100%;
+  font-size: 1rem;
+}
+
+.text-centered {
+  text-align: center;
+}
+
 .column-wrap {
   flex-wrap: wrap;
 }
 
-.flex {
-  margin-left: 0;
+.half-column {
   flex-basis: 50%;
+}
+
+.column-quarter {
+  flex-basis: 60%;
 }
 
 body {
@@ -31,11 +43,6 @@ p {
 h1,
 h3 {
   text-transform: uppercase;
-}
-
-.column-full {
-  text-align: center;
-  font-size: 1rem;
 }
 
 div.column-full > p {
@@ -71,10 +78,6 @@ button {
 .center {
   display: flex;
   justify-content: center;
-}
-
-.size {
-  flex-basis: 60%;
 }
 
 .margin-icon {
