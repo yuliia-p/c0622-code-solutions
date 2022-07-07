@@ -37,11 +37,9 @@ var msg = ' ';
 function categorizeAcidity(pH) {
   if (pH === 7) {
     msg = 'neutral';
-  }
-  if (pH <= 7) {
+  } else if (pH <= 7) {
     msg = 'acid';
-  }
-  if ((pH <= 14) && (pH >= 7)) {
+  } else if ((pH <= 14) && (pH >= 7)) {
     msg = 'base';
   } else {
     msg = 'invalid pH level';
