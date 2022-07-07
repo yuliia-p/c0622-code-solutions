@@ -16,9 +16,13 @@ body {
 }
 
 .column-full {
-  justify-content: center;
+  flex-basis: 100%;
   padding-top: 40px;
   letter-spacing: 1px;
+}
+
+.text-centered {
+  text-align: center;
 }
 
 .column-third {
