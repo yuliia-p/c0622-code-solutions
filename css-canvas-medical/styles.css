@@ -179,10 +179,19 @@ div.column-three-fourth > h2 {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 div.one-tenth > a {
   margin-top: 20px;
 }
 
 .center-text {
   padding-top: 10px;
+}
+
+.align-content {
+  display: flex;
+  align-items: center;
 }
