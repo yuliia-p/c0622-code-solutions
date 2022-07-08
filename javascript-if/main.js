@@ -29,7 +29,11 @@ function isOldEnoughToDrive(person) {
 }
 
 function isOldEnoughToDrinkAndDrive(person) {
-  return !(person.age >= 16) && (person.age >= 21);
+  if (person.age >= 16) {
+    return false;
+  } else if (person.age >= 21) {
+    return false;
+  }
 }
 
 var msg = ' ';
@@ -39,7 +43,7 @@ function categorizeAcidity(pH) {
     msg = 'neutral';
   } else if (pH <= 7) {
     msg = 'acid';
-  } else if ((pH <= 14) && (pH >= 7)) {
+  } else if ((pH <= 14) && (pH > 7)) {
     msg = 'base';
   } else {
     msg = 'invalid pH level';
