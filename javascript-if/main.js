@@ -36,9 +36,8 @@ function isOldEnoughToDrinkAndDrive(person) {
   }
 }
 
-var msg = ' ';
-
 function categorizeAcidity(pH) {
+  var msg = ' ';
   if (pH === 7) {
     msg = 'neutral';
   } else if (pH <= 7) {
@@ -51,8 +50,8 @@ function categorizeAcidity(pH) {
   return msg;
 }
 
-var catchPhrase = ' ';
 function introduceWarnerBro(name) {
+  var catchPhrase = ' ';
   if ((name === 'yakko') || (name === 'wakko')) {
     catchPhrase = "We're the warner brothers!";
   } else if (name === 'dot') {
