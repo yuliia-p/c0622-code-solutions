@@ -9,11 +9,11 @@
 
 .column-full {
   flex-basis: 100%;
-  font-size: 1rem;
 }
 
 .text-centered {
   text-align: center;
+  font-size: 1rem;
 }
 
 .column-wrap {
@@ -25,7 +25,11 @@
 }
 
 .column-quarter {
-  flex-basis: 60%;
+  flex-basis: 25%;
+}
+
+.column-three-quarters {
+  flex-basis: 75%;
 }
 
 body {
@@ -51,6 +55,7 @@ div.column-full > p {
 
 img {
   width: 100%;
+  padding-left: 30px;
 }
 
 div.column-three-quarters > p {
@@ -81,11 +86,7 @@ button {
 }
 
 .margin-icon {
-  margin-top: 30px;
-}
-
-.paddind-left {
-  padding-left: 50px;
+  margin-top: 15px;
 }
 
 .paddind-right {
