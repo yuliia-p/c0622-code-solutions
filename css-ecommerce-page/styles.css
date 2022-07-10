@@ -11,8 +11,12 @@
   flex-basis: 100%;
 }
 
-.column-fit {
+.column-fifth {
   flex-basis: 20%;
+}
+
+.margin {
+  margin: 10px;
 }
 
 body {
