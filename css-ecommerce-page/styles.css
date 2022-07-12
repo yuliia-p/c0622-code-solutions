@@ -1,0 +1,54 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column-full {
+  flex-basis: 100%;
+}
+
+.column-fifth {
+  flex-basis: 20%;
+}
+
+.margin {
+  margin: 10px;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+.image {
+  width: 150px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+p {
+  font-size: 0.5rem;
+  margin: 5px;
+}
+
+ins {
+  background-color: #fff2e7;
+  text-decoration: none;
+}
+
+span,
+del {
+  color: #d6d6d6;
+}
+
+h3 {
+  margin: 10px 0;
+  font-weight: bold;
+}
