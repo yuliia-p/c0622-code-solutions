@@ -1,4 +1,7 @@
 /* exported isVowel */
+// Check if each character is equal to a Vowel with if statement
+// include upper and lower cased
+// Return true or false
 function isVowel(char) {
   if ((char === 'a') || (char === 'A')) {
     return true;
