@@ -1,41 +1,18 @@
 
-// var clickCount = 0;
-// var switchLight = document.querySelector('.light-bulb-on');
+var switchLight = document.querySelector('.light-bulb');
 
-// var background = document.querySelector('.light-on');
+var background = document.querySelector('.background-light');
 
-// function turnOnOffLight() {
-//   clickCount++;
-//   var currentMode = null;
+var currentState = true;
+function turnOnOffLight() {
+  if (currentState) { // if on turm off
+    switchLight.className = 'light-bulb light-bulb-off';
+    background.className = 'background-light light-off display-flex';
+  } else { // if off turn on
+    switchLight.className = 'light-bulb light-bulb-on';
+    background.className = 'background-light light-on display-flex';
+  }
+  currentState = !currentState;
+}
 
-// }
-
-// if (currentMode) {
-//   switchLight.className = 'light-bulb-on';
-//   background.className = 'light-on display-flex';
-// } else {
-//   switchLight.className = 'light-bulb-off';
-//   background.className = 'light-off display-flex';
-// }
-
-// if ((switchLight.className === 'light-bulb-on light-bulb-off') &&
-//   (background.className === 'light-on light-off display-flex')) {
-//   switchLight.className = 'light-bulb-on';
-//   background.className = 'light-on display-flex';
-// } else {
-//   switchLight.className = 'light-bulb-off';
-//   background.className = 'light-off display-flex';
-// }
-
-// console.log(switchLight.className);
-
-// switchLight.addEventListener('click', turnOnOffLight);
-
-// var el = document.querySelectorAll('.light');
-// if (el.className('.light-on .light-bulb-on')) {
-//   el.className = '.light-off .light-bulb-off';
-// } else {
-//   el.className = '.light-on .light-bulb-on';
-// }
-// && document.querySelector('light-off')) {
-//     document.querySelector('light-off');
+switchLight.addEventListener('click', turnOnOffLight);
