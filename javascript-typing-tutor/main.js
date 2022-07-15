@@ -1,35 +1,17 @@
-/*
-<div>
-<span class="w">w</span>
-<span class="o">o</span>
-<span class="r">r</span>
-<span class="d">d</span>
-</div>
+var el = document.querySelectorAll('span');
 
-var string = 'word';
+document.addEventListener('keydown', typingTutor);
 var index = 0;
-var errorCount = 0
 
-function (event) {
-var letter = string[index];
-var input = event.key;
-var el = document.querySelector(letter);
+function typingTutor(event) {
+  var letter = el[index].textContent;
+  if (letter === event.key) {
+    el[index].className = 'letter green';
+    el[index].className = 'etter green underline';
+    index++;
 
-// check if letter is correct
-if (letter === input) {
-  // add class to make it green
-  el.className = letter + ' green';
-  index++;
-  // increase index by 1
+  } else {
+    el[index].className = 'letter red';
+    el[index].className = 'etter red underline';
+  }
 }
-else {
-  // add class to make it red
-  // add errorCount + 1
-  el.className = letter + ' red';
-  errorCount++;
-}
-
-}
-
-errorCount out of string.length
-*/
