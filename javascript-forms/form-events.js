@@ -5,9 +5,6 @@ function handleFocus(event) {
   console.log(event.target.value);
 }
 
-// var a = document.forms.elements[0].name;
-// console.log(a);
-
 function handleBlur(event) {
   console.log('blur event fired');
   console.log(event.target.name);
@@ -20,13 +17,19 @@ function handleInput(event) {
 }
 
 var elNameInput = document.querySelector('#user-name');
-// document.forms.name;
+
 var elEmailInput = document.querySelector('#user-email');
 
 var elTextInput = document.querySelector('#user-message');
 
 elNameInput.addEventListener('focus', handleFocus);
+elNameInput.addEventListener('blur', handleBlur);
+elNameInput.addEventListener('input', handleInput);
 
+elEmailInput.addEventListener('focus', handleFocus);
 elEmailInput.addEventListener('blur', handleBlur);
+elEmailInput.addEventListener('input', handleInput);
 
+elTextInput.addEventListener('focus', handleFocus);
+elTextInput.addEventListener('blur', handleBlur);
 elTextInput.addEventListener('input', handleInput);
