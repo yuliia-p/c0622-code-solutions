@@ -7,11 +7,10 @@ function typingTutor(event) {
   var letter = el[index].textContent;
   if (letter === event.key) {
     el[index].className = 'letter green';
-    el[index].className = 'etter green underline';
     index++;
+    el[index].className = 'letter underline';
 
   } else {
-    el[index].className = 'letter red';
-    el[index].className = 'etter red underline';
+    el[index].className = 'letter red underline';
   }
 }
