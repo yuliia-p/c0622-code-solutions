@@ -7,7 +7,7 @@
 // if condition is false do next step - first letter to upper, rest lower
 function capitalizeWord(word) {
   if (word.toUpperCase() === 'JAVASCRIPT') {
-    return word.charAt(0).toUpperCase() + word.slice(1, 4).toLowerCase() + word.charAt(4).toUpperCase() + word.slice(5).toLowerCase();
+    return 'JavaScript';
   } else {
     var newWord = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     return newWord;
