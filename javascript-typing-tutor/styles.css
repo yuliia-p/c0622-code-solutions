@@ -1,0 +1,36 @@
+.body {
+  max-width: 800px;
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+  padding: 100px;
+  white-space: pre;
+}
+
+.letter {
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  nav-left: auto;
+
+  /* text-decoration: underline; */
+}
+
+.green {
+  color: rgb(142 221 24);
+}
+
+.red {
+  color: red;
+}
+
+.underline {
+  border-bottom: 3px solid;
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight: bold;
+}
