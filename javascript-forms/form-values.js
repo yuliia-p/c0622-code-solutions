@@ -16,8 +16,6 @@ function getValues(event) {
   newObj.name = elContactForm.elements.name.value;
   newObj.email = elContactForm.elements.email.value;
   newObj.userMessage = elContactForm.elements.message.value;
-
-  // return newObj;
   console.log(newObj);
   elContactForm.reset();
 }
