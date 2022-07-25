@@ -12,7 +12,7 @@ function capitalizeWords(string) {
   for (var i = 0; i < words.length; i++) {
     var capW = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
     newArr.push(capW);
-    var Str = newArr.join(' ');
   }
+  var Str = newArr.join(' ');
   return Str;
 }
