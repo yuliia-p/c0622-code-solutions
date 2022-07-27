@@ -1,17 +1,14 @@
 var textEl = document.querySelector('.countdown-display');
+var count = 4;
+setInterval(changeCount, 1000);
+// var intervalId = setInterval(changeCount, 1000);
 
 function changeCount() {
-  if (textEl.textContent === '4') {
-    textEl.textContent = '3';
-  } else if (textEl.textContent === '3') {
-    textEl.textContent = '2';
-  } else if (textEl.textContent === '2') {
-    textEl.textContent = '1';
-  } else if (textEl.textContent === '1') {
+  count--;
+  if (count > 0) {
+    textEl.textContent = count;
+  } else {
     textEl.textContent = '~Earth Beeeelooowww Us~';
   }
+  // clearInterval(intervalId);
 }
-
-setInterval(changeCount, 1000);
-var interval = setInterval(changeCount, 1000);
-clearInterval(interval);
