@@ -1,15 +1,18 @@
 /* exported takeRight */
-// check if number is larger
-// than the length of the array
-// if so - return array
-// if not use slice method to take
-// number(count) of elements from the end of array
-// return the result
+
+// use slice method with length - count/given number
+// to return a shallow copy witch last count elements
+// if count > than array.length return array
+
 function takeRight(array, count) {
   if (count > array.length) {
     return array;
   } else {
+
+    return array.slice(array.length - count);
+
     array.slice(-count);
     return array.slice(-count);
+
   }
 }
