@@ -38,6 +38,7 @@ function clickOnDot(event) {
     iElements[newIndex].className = 'fa-solid fa-circle current';
     currentIndex = newIndex;
   }
+  clearInterval(setInterval(nextImage, 3000));
 }
 
 setInterval(nextImage, 3000);
