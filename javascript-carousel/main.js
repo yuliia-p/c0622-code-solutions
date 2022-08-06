@@ -7,9 +7,12 @@ var currentIndex = 0;
 
 lefttArrow.addEventListener('click', prevImgRight);
 rightArrow.addEventListener('click', nextImage);
+dotContEl.addEventListener('click', clickOnDot);
+setInterval(nextImage, 3000);
+
 // previous
 function prevImgRight(event) {
-  // clearInterval(setInterval(nextImage, 3000));
+  clearInterval(setInterval(nextImage, 3000));
   // when currentIndex becomes 0, jump back to finish
   if (currentIndex === 0) {
     imgEls[currentIndex].className = 'img display-none';
@@ -27,10 +30,8 @@ function prevImgRight(event) {
   }
 }
 
-dotContEl.addEventListener('click', clickOnDot);
-
 function clickOnDot(event) {
-  // clearInterval(setInterval(nextImage, 3000));
+  clearInterval(setInterval(nextImage, 3000));
   if (event.target.tagName === 'I') {
     var buttonId = event.target.getAttribute('data-icon'); // 1-5; id of i el
     var newIndex = buttonId - 1;
@@ -40,14 +41,12 @@ function clickOnDot(event) {
     iElements[newIndex].className = 'fa-solid fa-circle current';
     currentIndex = newIndex;
   }
-
 }
 
-setInterval(nextImage, 3000);
 // 0 1 2 3 4 -> index
 // 1 2 3 4 5 -> length
 function nextImage(event) {
-
+  // clearInterval(setInterval(nextImage, 3000));
   if (currentIndex === imgEls.length - 1) {
     // jump back to 0
     imgEls[currentIndex].className = 'img display-none';
