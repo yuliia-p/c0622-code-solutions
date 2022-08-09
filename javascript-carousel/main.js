@@ -12,8 +12,8 @@ setInterval(nextImage, 3000);
 
 // previous
 function prevImgRight(event) {
-  clearInterval(setInterval(nextImage, 3000));
   // when currentIndex becomes 0, jump back to finish
+  clearInterval(setInterval(nextImage, 3000));
   if (currentIndex === 0) {
     imgEls[currentIndex].className = 'img display-none';
     imgEls[imgEls.length - 1].className = 'img';
@@ -31,8 +31,8 @@ function prevImgRight(event) {
 }
 
 function clickOnDot(event) {
-  clearInterval(setInterval(nextImage, 3000));
   if (event.target.tagName === 'I') {
+    clearInterval(setInterval(nextImage, 3000));
     var buttonId = event.target.getAttribute('data-icon'); // 1-5; id of i el
     var newIndex = buttonId - 1;
     imgEls[currentIndex].className = 'img display-none';
@@ -46,7 +46,6 @@ function clickOnDot(event) {
 // 0 1 2 3 4 -> index
 // 1 2 3 4 5 -> length
 function nextImage(event) {
-  // clearInterval(setInterval(nextImage, 3000));
   if (currentIndex === imgEls.length - 1) {
     // jump back to 0
     imgEls[currentIndex].className = 'img display-none';
