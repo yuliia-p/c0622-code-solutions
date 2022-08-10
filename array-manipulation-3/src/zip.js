@@ -5,7 +5,6 @@
 
 function zip(first, second) {
   var arrHolder = [];
-  // if first array shorter loop through and push elements to new arr
   var minLength = first.length;
   if (second.length < first.length) {
     minLength = second.length;

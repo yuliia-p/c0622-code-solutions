@@ -6,7 +6,6 @@
 // if no - just compare
 
 function equal(first, second) {
-  // debugger;
   if (first.length !== second.length || !first || !second) {
     return false;
   }
