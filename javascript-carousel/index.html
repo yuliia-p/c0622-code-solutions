@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Carousel</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="border">
+    <div class="row align-center">
+      <div class="col-fifth back">
+        <i class="fa-solid fa-chevron-left fa-3x"></i>
+      </div>
+      <div class="col-three-fifths content">
+        <img id="1" src="images/025.png" alt="pikachu" class="img">
+        <img id="2" src="images/039.png" alt="pikachu" class="img display-none">
+        <img id="3" src="images/007.png" alt="pikachu" class="img display-none">
+        <img id="4" src="images/004.png" alt="pikachu" class="img display-none">
+        <img id="5" src="images/001.png" alt="pikachu" class="img display-none">
+      </div>
+      <div class="col-fifth next">
+        <i class="fa-solid fa-chevron-right fa-3x"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-full dots align-center">
+        <i data-icon="1" class="fa-solid fa-circle current"></i>
+        <i data-icon="2" class="fa-solid fa-circle"></i>
+        <i data-icon="3" class="fa-solid fa-circle"></i>
+        <i data-icon="4" class="fa-solid fa-circle"></i>
+        <i data-icon="5" class="fa-solid fa-circle"></i>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+.border {
+  border: solid 3px black;
+  padding: 30px;
+}
+
+.row {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+  text-align: center;
+}
+
+.col-fifth {
+  flex-basis: 20%;
+}
+
+.col-three-fifths {
+  flex-basis: 60%;
+}
+
+.col-full {
+  width: 100%;
+  flex-basis: 100%;
+}
+
+.fa-solid {
+  margin: 10px;
+  color: lightgray;
+}
+
+.display-none {
+  display: none;
+}
+
+.current {
+  color: black;
+}
+
+.fa-chevron-right,
+.fa-chevron-left {
+  color: black;
+}
