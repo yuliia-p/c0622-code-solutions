@@ -46,7 +46,7 @@ console.log('deck', deck);
 function shuffle(deck) {
   // for 500 turns
   // switch the values of two random cards
-  for (let i = 0; i < 500; i++) {
+  for (var i = 0; i < 500; i++) {
     var cardPlace1 = Math.floor((Math.random() * deck.length));
     var cardPlace2 = Math.floor((Math.random() * deck.length));
     var temporary = deck[cardPlace1];
