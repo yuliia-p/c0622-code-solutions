@@ -1,30 +1,21 @@
 /* exported zip */
-// new amptu array
-
-// take first el and push it new arr
-// ['name', 'course', 'grade'], ['Cody', 'CSS', 9001]
-// -> [["name", "Cody"], ["course", "CSS"], ["grade", 9001]]
-// should i delete ?
+// new empty array
+// find the amount of loops based on the length of shortes of the arrays
+// loop through the shortest array and push elements to new array
 
 function zip(first, second) {
-  // debugger;
-  var newArr = [];
   var arrHolder = [];
-  for (var i = 0; i < first.length; i++) {
-    if (first[i] && second[i]) {
-      newArr.push(first[i], second[i]);
-      arrHolder.push(newArr);
-      newArr = [];
-    }
-    // } else {
-
-    // }
-    // newArr.push(first[i], second[i]);
-    // arrHolder.push(newArr);
-    // newArr = [];
+  // if first array shorter loop through and push elements to new arr
+  var minLength = first.length;
+  if (second.length < first.length) {
+    minLength = second.length;
+  }
+  for (var i = 0; i < minLength; i++) {
+    arrHolder.push([first[i], second[i]]);
   }
   return arrHolder;
 }
+
 zip(
   ['dog', 'lion', 'hawk', 'tiger'],
   ['cat', 'lamb', 'dove']
