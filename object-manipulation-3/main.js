@@ -1,28 +1,16 @@
 console.log('Lodash is loaded:', typeof _ !== 'undefined');
 
-// var collectionPlayers = [
-//   {
-//     name: '',
-//     hand: 0
-//   },
-//   {
-//     name: '',
-//     hand: 0
-//   },
-//   {
-//     name: '',
-//     hand: 0
-//   },
-//   {
-//     name: '',
-//     hand: 0
-//   }
-// ];
-
 var suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
 var values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
+var deck = [];
+
+// function Players(name, hand) {
+//   this.name = name;
+//   this.habd = hand;
+// }
 
 // create a collection of fifty-two objects
+deck = deckGenerator();
 function deckGenerator() {
   var deck = []; // 52 card-obj
   for (var i = 0; i < suits.length; i++) {
@@ -32,15 +20,10 @@ function deckGenerator() {
         suit: suits[i]
       };
       deck.push(card);
-      // console.log('card', card);
     }
   }
   return deck;
-  // console.log('deck', deck);
 }
-
-var deck = deckGenerator();
-console.log('deck', deck);
 
 // shuffle the deck
 function shuffle(deck) {
@@ -54,6 +37,11 @@ function shuffle(deck) {
     deck[cardPlace1] = deck[cardPlace2];
     deck[cardPlace2] = temporary;
   }
-  return deck;
 }
 shuffle(deck);
+console.log('deck', deck);
+
+function deal() {
+  return this.deck.pop();
+}
+deal();
