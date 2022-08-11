@@ -14,18 +14,26 @@ function titleCase(title) {
   for (var i = 1; i < words.length; i++) {
     if (exceptions.includes(words[i])) {
       newArr.push(words[i]);
+    } else if (words[i].includes('-')) { // in-depth
+      var capitalCount = words[i].indexOf('-') + 1;
+      var splitWordArray = words[i].split(''); // ==> [i, n, -, d, e, p, t, h]
+      splitWordArray.splice(0, 1, splitWordArray[0].toUpperCase());
+      splitWordArray.splice(capitalCount, 1, splitWordArray[capitalCount].toUpperCase());
+      newArr.push(splitWordArray.join(''));
+    } else if (words[i].includes(':')) {
+      var wordAftercolon = words[i + 1].toUpperCase();
+      newArr.push(wordAftercolon);
     } else {
       var restWords = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
       newArr.push(restWords);
     }
   }
   var str = newArr.join(' ');
-  var js = 'Javascript' || 'Javascript:';
+  var js = 'Javascript' || 'Javascript:'; // ?
   var newStr = str.replace(js, 'JavaScript');
   return newStr;
 }
-titleCase('speaking Javascript: an in-depth guide for programmers');
-
+titleCase('speaking: the in-depth guide for programmers');
 titleCase('hop on pop');
 titleCase('node.js in action');
 titleCase('professional JavaScript for web developers');
