@@ -1,20 +1,27 @@
 /* exported isPalindromic */
-// create an empty string
-// loop given string
+// using split method break str into array
+// loop through array to remove spaces
+// join() result
+// reapeat the loop but in reverse order
 // return boolean
 function isPalindromic(string) {
-  // debugger;
-  var newString = '';
-  var array = string.split('');
-  if (string === 'taco cat') {
-    return true;
+
+  var strToArray = string.split(''); // [t, a, c, o, ' ', c, a, t]
+  var noSpaceArray = [];
+  for (let i = 0; i < strToArray.length; i++) {
+    if (strToArray[i] !== ' ') {
+      noSpaceArray.push(strToArray[i]);
+      var noSpacesStr = noSpaceArray.join('');
+    }
   }
-  for (var i = array.length - 1; i >= 0; i--) {
-    // if (array[i] !== ' ') {
-    newString += array[i];
-    // }
-  } return string === newString;
+  var noSpaceReverse = [];
+  for (let i = strToArray.length - 1; i >= 0; i--) {
+    if (strToArray[i] !== ' ') {
+      noSpaceReverse.push(strToArray[i]);
+      var reverseW = noSpaceReverse.join('');
+    }
+  }
+  return noSpacesStr === reverseW;
 }
-// split into letters
-// remove spaces
+
 isPalindromic('taco cat');
