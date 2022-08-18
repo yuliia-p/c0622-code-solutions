@@ -25,7 +25,6 @@ if (process.argv[2] === 'create') {
 if (process.argv[2] === 'delete') {
   const idToDelete = process.argv[3];
   delete data.notes[idToDelete];
-  data.nextId--;
   fs.writeFile('data.json', JSON.stringify(data, null, 2), err => {
     if (err) throw err;
   });
@@ -40,3 +39,10 @@ if (process.argv[2] === 'update') {
     if (err) throw err;
   });
 }
+/*
+if (process.argv[2] === 'read') {
+
+}
+
+if (process.argv[2] === 'delete')
+*/
