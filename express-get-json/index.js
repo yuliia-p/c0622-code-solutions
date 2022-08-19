@@ -23,14 +23,14 @@ const grades = {
 };
 
 app.get('/api/grades', (req, res) => {
-  function gradesArray(grades) {
-    const newGradesArr = [];
-    for (const key in grades) {
-      newGradesArr.push(key, grades[key]);
-    }
-    return newGradesArr;
+  // function gradesArray(grades) {
+  const newGradesArr = [];
+  for (const key in grades) {
+    newGradesArr.push(key, grades[key]);
   }
-  res.json(gradesArray(grades));
+  // return newGradesArr;
+  // }
+  res.json(newGradesArr);
 });
 
 app.listen(3000, () => {
