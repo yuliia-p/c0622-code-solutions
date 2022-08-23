@@ -16,7 +16,7 @@ app.get('/api/notes', (req, res) => {
 
 app.get('/api/notes/:id', (req, res) => {
   // const numID = Number(req.params.id);
-  if (!Number.isInteger(req.params.id) && req.params.id < 0) {
+  if (!Number.isInteger(req.params.id) && req.params.id <= 0) {
     res.status(400).json({ error: 'id must be a positive integer' });
   } else if (!data.notes[req.params.id]) {
     res.status(404).json({ error: 'cannot find note with this id' });
@@ -38,16 +38,17 @@ app.post('/api/notes/', (req, res) => {
       if (err) {
         console.error(err);
         res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.status(201);
+        res.send(noteObj);
       }
     });
-    res.status(201);
-    res.send(noteObj);
   }
 });
 
 app.delete('/api/notes/:id', (req, res) => {
   const idToDelete = Number(req.params.id);
-  if (!Number.isInteger(idToDelete) && idToDelete < 0) {
+  if (!Number.isInteger(idToDelete) && idToDelete <= 0) {
     res.status(400).json({ error: 'id must be a positive integer' });
   } else if (!data.notes[idToDelete]) {
     res.status(404).json({ error: 'cannot find note with this id' });
@@ -57,15 +58,16 @@ app.delete('/api/notes/:id', (req, res) => {
       if (err) {
         console.error(err);
         res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.sendStatus(204);
       }
     });
-    res.sendStatus(204);
   }
 });
 
 app.put('/api/notes/:id', (req, res) => {
   const idToUpdate = Number(req.params.id);
-  if (!Number.isInteger(idToUpdate) && idToUpdate < 0) {
+  if (!Number.isInteger(idToUpdate) && idToUpdate <= 0) {
     res.status(400).json({ error: 'id must be a positive integer' });
   } else if (!req.body.content) {
     res.status(400).json({ error: 'id must be a positive integer' });
@@ -74,12 +76,15 @@ app.put('/api/notes/:id', (req, res) => {
   } else {
     data.notes[idToUpdate].content = req.body.content;
     fs.writeFile('data.json', JSON.stringify(data, null, 2), err => {
-      console.error(err);
-      res.status(500).json({ error: 'An unexpected error occurred.' });
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.status(200);
+        res.send(data.notes[idToUpdate]);
+      }
     });
   }
-  res.status(200);
-  res.send(data.notes[idToUpdate]);
 });
 
 app.listen(3000, () => {
