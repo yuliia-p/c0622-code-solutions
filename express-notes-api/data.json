@@ -1,5 +1,5 @@
 {
-  "nextId": 11,
+  "nextId": 13,
   "notes": {
     "2": {
       "id": 2,
@@ -15,11 +15,11 @@
     },
     "9": {
       "id": 9,
-      "content": "The event loop, this, closures, and prototypal inheritance are special about JavaScript."
+      "content": "Route parameters are named URL segments that are used to capture the values specified at their position in the URL. The captured values are populated in the req.params object, with the name of the route parameter specified in the path as their respective keys."
     },
-    "10": {
-      "id": 10,
-      "content": "You can use this mechanism to perform pre-conditions on a route then pass control to subsequent routes when there is no reason to proceed with the route matched."
+    "12": {
+      "content": "The event loop, this, closures, and prototypal inheritance are special about JavaScript.",
+      "id": 12
     }
   }
 }

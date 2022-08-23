@@ -69,7 +69,7 @@ app.put('/api/notes/:id', (req, res) => {
     res.status(400).json({ error: 'id must be a positive integer' });
   } else if (!req.body.content) {
     res.status(400).json({ error: 'id must be a positive integer' });
-  } else if (!data.notes[idToUpdate].content) {
+  } else if (!data.notes[idToUpdate]) {
     res.status(404).json({ error: 'cannot find note with this id' });
   } else {
     data.notes[idToUpdate].content = req.body.content;
