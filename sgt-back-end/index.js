@@ -67,9 +67,9 @@ app.get('/api/grades/', (req, res) => {
 
 app.post('/api/grades/', (req, res) => {
   const newGradeObj = req.body;
-  if (!newGradeObj.name || !newGradeObj.course || !newGradeObj.score) {
+  if (!newGradeObj.name || !newGradeObj.course) {
     return res.status(400).json({ error: 'missing name, course, or score' });
-  } else if ((!Number.isInteger(newGradeObj.score) || newGradeObj.score > 100 || newGradeObj.score < 0)) {
+  } else if ((!Number.isInteger(newGradeObj.score) || newGradeObj.score > 100 || newGradeObj.score < -1)) {
     return res.status(400).json({ error: 'invalid score' });
   }
   const params = [newGradeObj.name, newGradeObj.course, newGradeObj.score];
