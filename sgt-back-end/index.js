@@ -48,7 +48,6 @@ app.get('/api/grades/:gradeId', (req, res, next) => {
 });
 
 app.get('/api/grades/', (req, res) => {
-  const arrayOfObj = [];
   const sql = `
     select *
       from "grades"
@@ -56,7 +55,6 @@ app.get('/api/grades/', (req, res) => {
   db.query(sql)
     .then(result => {
       const grades = result.rows;
-      arrayOfObj.push(arrayOfObj);
       res.status(200).json(grades);
     }).catch(err => {
       console.error(err);
@@ -70,12 +68,9 @@ app.get('/api/grades/', (req, res) => {
 app.post('/api/grades/', (req, res) => {
   const newGradeObj = req.body;
   if (!newGradeObj.name || !newGradeObj.course || !newGradeObj.score) {
-    res.status(400).json({ error: 'missing name, course, or score' });
-  } else if ((!Number.isInteger(newGradeObj.score) || newGradeObj.score > 100)) {
-    res.status(400).json({ error: 'invalid score' });
-  } else {
-    res.status(201);
-    res.send(newGradeObj);
+    return res.status(400).json({ error: 'missing name, course, or score' });
+  } else if ((!Number.isInteger(newGradeObj.score) || newGradeObj.score > 100 || newGradeObj.score < 0)) {
+    return res.status(400).json({ error: 'invalid score' });
   }
   const params = [newGradeObj.name, newGradeObj.course, newGradeObj.score];
   const sql = `
@@ -85,7 +80,7 @@ app.post('/api/grades/', (req, res) => {
        returning *`;
   db.query(sql, params)
     .then(result => {
-      res.status(201).json(newGradeObj);
+      res.status(201).json(result.rows[0]);
     }).catch(err => {
       console.error(err);
       res.status(500).json({
@@ -96,61 +91,64 @@ app.post('/api/grades/', (req, res) => {
 
 app.put('/api/grades/:gradeId', (req, res) => {
   const idToUpdate = Number(req.params.gradeId);
-  if (!Number.isInteger(idToUpdate) && idToUpdate <= 0) {
-    res.status(400).json({ error: 'id must be a positive integer' });
+  if (!Number.isInteger(idToUpdate) || idToUpdate <= 0) {
+    return res.status(400).json({ error: 'id must be a positive integer' });
   } else if (!req.body.name || !req.body.course || !req.body.score) {
-    res.status(400).json({ error: 'missing name, course, or score' });
-  } else {
-    const sql = `
+    return res.status(400).json({ error: 'missing name, course, or score' });
+  } else if ((!Number.isInteger(req.body.score.score) || req.body.score.score > 100 || req.body.score.score < 0)) {
+    return res.status(400).json({ Error: 'score is invalid.' });
+  }
+  const sql = `
         update "grades"
             set "name" = $1,
                 "course" = $2,
                 "score" = $3
             where "gradeId" = $4
             returning *`;
-    const params = [req.body.name, req.body.course, req.body.score, idToUpdate];
-    db.query(sql, params)
-      .then(result => {
-        const gradeToUpdate = result.rows[0];
-        if (!gradeToUpdate) {
-          res.status(404).json({ error: 'cannot find note with this id' });
-        } else {
-          res.json(gradeToUpdate);
-        }
-      }).catch(err => {
-        console.error(err);
-        res.status(500).json({
-          error: 'An unexpected error occurred.'
-        });
+  const params = [req.body.name, req.body.course, req.body.score, idToUpdate];
+  db.query(sql, params)
+    .then(result => {
+      const gradeToUpdate = result.rows[0];
+      if (!gradeToUpdate) {
+        res.status(404).json({ error: 'cannot find note with this id' });
+      } else {
+        res.json(gradeToUpdate);
+      }
+    }).catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
       });
-  }
-});
+    });
+}
+);
 
 app.delete('/api/grades/:gradeId', (req, res) => {
   const idToDelete = Number(req.params.gradeId);
-  if (!Number.isInteger(idToDelete) && idToDelete <= 0) {
-    res.status(400).json({ error: 'invalid gradeId' });
-  } else if (!idToDelete) {
-    res.status(404).json({ error: 'cannot find grade with this id' });
-  } else {
-    const params = [idToDelete];
-    const sql = `
+  if (!Number.isInteger(idToDelete) || idToDelete <= 0) {
+    return res.status(400).json({ error: 'invalid gradeId' });
+  }
+  const sql = `
     delete from "grades"
     where "gradeId" = $1
         returning *;`;
-    db.query(sql, params)
-      .then(result => {
-        res.sendStatus(204);
-      }).catch(err => {
-        console.error(err);
-        res.status(500).json({
-          error: 'An unexpected error occurred.'
-        });
+  const params = [idToDelete];
+  db.query(sql, params)
+    .then(result => {
+      const deletGrade = result.rows[0];
+      if (!deletGrade) {
+        return res.status(400).json({ error: 'Id doesn\'t exist in the system' });
+      }
+      res.sendStatus(204);
+    }).catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
       });
-  }
+    });
 });
 
 app.listen(3000, () => {
   // eslint-disable-next-line no-console
-  // console.log('Express server listening on port 3000');
+  console.log('Express server listening on port 3000');
 });
