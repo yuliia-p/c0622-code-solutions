@@ -93,9 +93,9 @@ app.put('/api/grades/:gradeId', (req, res) => {
   const idToUpdate = Number(req.params.gradeId);
   if (!Number.isInteger(idToUpdate) || idToUpdate <= 0) {
     return res.status(400).json({ error: 'id must be a positive integer' });
-  } else if (!req.body.name || !req.body.course || !req.body.score) {
+  } else if (!req.body.name || !req.body.course) {
     return res.status(400).json({ error: 'missing name, course, or score' });
-  } else if ((!Number.isInteger(req.body.score.score) || req.body.score.score > 100 || req.body.score.score < 0)) {
+  } else if ((!Number.isInteger(req.body.score) || req.body.score > 100 || req.body.score < 0)) {
     return res.status(400).json({ Error: 'score is invalid.' });
   }
   const sql = `
