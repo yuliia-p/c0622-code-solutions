@@ -26,12 +26,14 @@ const product = numbers.reduce((previousValue, currentValue) => {
 });
 console.log('product: ', product);
 
-const balance = account.filter(item =>
-  item.type === 'deposit').reduce((previousValue, currentValue) => {
-  return previousValue + currentValue.amount;
-}, 0) - account.filter(item =>
-  item.type === 'withdrawal').reduce((previousValue, currentValue) => {
-  return previousValue + currentValue.amount;
+const balance = account.reduce((previousValue, currentValue) => {
+  let amount = currentValue.amount;
+  if (currentValue.type === 'deposit') {
+    amount = previousValue + amount;
+  } else {
+    amount = previousValue - amount;
+  }
+  return amount;
 }, 0);
 
 console.log('balance: ', balance);
