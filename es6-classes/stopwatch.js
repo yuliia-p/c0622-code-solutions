@@ -24,7 +24,7 @@ class Stopwatch {
   }
 
   tick() {
-
+    this.elapsedSeconds++;
   }
 
   reset() {
