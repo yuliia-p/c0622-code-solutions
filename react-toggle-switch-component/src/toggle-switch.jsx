@@ -8,11 +8,8 @@ export default class ToogleSwitch extends React.Component {
   }
 
   handleClick() {
-    if (!this.state.switchOn) {
-      this.setState({ switchOn: true });
-    } else if (this.state.switchOn) {
-      this.setState({ switchOn: false });
-    }
+
+    this.setState({ switchOn: true });
 
   }
 
