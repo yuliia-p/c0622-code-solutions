@@ -1,0 +1,36 @@
+.button {
+  padding: 15px 40px;
+  font-size: 20px;
+  border-radius: 2px;
+  border-color: black;
+}
+
+.three-clicks {
+  color: white;
+  background-color: darkslateblue;
+}
+
+.six-clicks {
+  color: white;
+  background-color: darkorchid;
+}
+
+.nine-clicks {
+  color: white;
+  background-color: indianred;
+}
+
+.twelve-clicks {
+  color: white;
+  background-color: orange;
+}
+
+.fifteen-clicks {
+  color: white;
+  background-color: yellow;
+}
+
+.eighteen-clicks {
+  color: black;
+  background-color: white;
+}
