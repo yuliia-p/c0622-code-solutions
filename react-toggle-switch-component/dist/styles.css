@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+.switch-div {
+  position: relative;
+  width: 4rem;
+  height: 2rem;
+  border: 0.18rem solid black;
+  border-radius: 1.5rem;
+}
+
+.switch-div-on {
+  background-color: rgb(130 198 101);
+}
+
+.switch-div-off {
+  background-color: rgb(175 175 175);
+}
+
+.switch {
+  position: absolute;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: white;
+  border: 0.18rem solid black;
+  border-radius: 50%;
+}
+
+.switch-on {
+  right: 0;
+}
+
+.switch-off {
+  left: 0;
+}
