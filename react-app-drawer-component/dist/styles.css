@@ -12,16 +12,21 @@
   cursor: pointer;
 }
 
+ul {
+  padding: 0;
+}
+
 li {
   list-style-type: none;
 }
 
-.padding-left {
-  padding-left: 2rem;
+li:hover {
+  background-color: lightgrey;
 }
 
 .menu-content,
 .on {
+  padding-left: 2rem;
   position: fixed;
   left: 0;
   top: 0;
