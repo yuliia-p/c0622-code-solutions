@@ -15,13 +15,11 @@ class RegistrationForm extends React.Component {
 
   handleUsernameChange(e) {
     this.setState({ username: e.target.value });
-    console.log('username: ', e.target.username);
 
   }
 
   handlePasswordChange(e) {
     this.setState({ password: e.target.value });
-    console.log('password: ', e.target.password);
   }
 
   handleSubmit(e) {
