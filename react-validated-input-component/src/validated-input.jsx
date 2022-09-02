@@ -25,7 +25,7 @@ export default class ValidatedInput extends React.Component {
   render() {
     let errText;
     let iconClassName;
-    // const exceptions = ['!', '@', '#', '$, '%', '&', '*', '(', ')' ];
+    const exceptions = ['!', '@', '#', '$', '%', '&', '*', '(', ')'];
     const usersInput = this.state.password;
     if (usersInput.length === 0) {
       iconClassName = 'fa-xmark';
@@ -33,7 +33,7 @@ export default class ValidatedInput extends React.Component {
     } else if (usersInput.length < 8) {
       iconClassName = 'fa-xmark';
       errText = 'Your password is too short';
-    } else if (!usersInput.includes('!' || '@' || '#' || '$' || '%' || '&' || '*' || '(' || ')')) {
+    } else if (!exceptions.some(character => usersInput.includes(character))) {
       iconClassName = 'fa-xmark';
       errText = 'Please include a special character';
       // a special character
