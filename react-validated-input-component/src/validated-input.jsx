@@ -37,6 +37,9 @@ export default class ValidatedInput extends React.Component {
       iconClassName = 'fa-xmark';
       errText = 'Please include a special character';
       // a special character
+    } else if (usersInput === usersInput.toLowerCase()) {
+      iconClassName = 'fa-xmark';
+      errText = 'Please include a capital letter';
     } else {
       iconClassName = 'fa-check';
       errText = '';
