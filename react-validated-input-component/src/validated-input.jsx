@@ -25,6 +25,7 @@ export default class ValidatedInput extends React.Component {
   render() {
     let errText;
     let iconClassName;
+    // const exceptions = ['!', '@', '#', '$, '%', '&', '*', '(', ')' ];
     const usersInput = this.state.password;
     if (usersInput.length === 0) {
       iconClassName = 'fa-xmark';
