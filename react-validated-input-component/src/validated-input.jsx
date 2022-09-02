@@ -41,6 +41,16 @@ export default class ValidatedInput extends React.Component {
       iconClassName = 'fa-check';
       errText = '';
     }
+    /*
+    else {
+      for (let i = 0; i < usersInput.length; i++) {
+        if (usersInput[i] === usersInput[i].toLowerCase) {
+          iconClassName = 'fa-xmark';
+          errText = 'Please include a capital letter';
+        }
+      }
+    }
+    */
     return (
       <div>
       <div className='container'>
