@@ -70,28 +70,26 @@ export default class App extends React.Component {
 
   toggleCompleted(todoId) {
     const objToCompl = this.state.todos.find(e => e.todoId === todoId);
+    const toggleStatus = objToCompl.isCompleted;
     // console.log('objToCompl', objToCompl);
-    // console.log('objToCompl.todoId', objToCompl.todoId);
-    const objToggle = { isCompleted: !objToCompl.isCompleted };
-    // console.log('objToggle', objToggle);
+    const toggle = { isCompleted: !toggleStatus };
 
     fetch(`/api/todos/${todoId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(objToggle)
+      body: JSON.stringify(toggle)
     })
       .then(response => response.json())
       .then(data => {
-
-        const todosCopy = [...this.state.todos, data];
-        // console.log('this.state.todos', this.state.todos);
+        const todosCopy = [...this.state.todos];
+        const index = todosCopy.map(o => o.todoId).indexOf(data.todoId);
+        todosCopy[index] = data;
+        // console.log('index', index);
         // console.log('todosCopy', todosCopy);
-
         this.setState({ todos: todosCopy });
       })
-
       .catch(error => {
         console.error('Error:', error);
       });
