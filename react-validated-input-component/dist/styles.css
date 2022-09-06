@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.fa-sharp {
+  font-size: 1.3rem;
+  margin: 1.2rem 0 0 0.8rem;
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-xmark {
+  color: red;
+}
+
+label {
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+p {
+  margin: 0;
+  font-weight: 600;
+  color: red;
+  font-size: 0.8rem;
+}
