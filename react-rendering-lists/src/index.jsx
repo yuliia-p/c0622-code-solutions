@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom/client';
 import React from 'react';
 
 function Pokemon(props) {
-  const list = props.pokedex.map(onePokemon =>
     <li key={onePokemon.number}>
       {onePokemon.name}
     </li>);
