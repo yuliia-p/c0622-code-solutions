@@ -4,8 +4,6 @@ export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
     // console.log('this.props.images', this.props.images);
-    // console.log('this.props.images.length', this.props.images.length);
-
     this.state = {
       intervalId: null,
       currentIndex: 0
@@ -47,13 +45,28 @@ export default class Carousel extends React.Component {
     } else if (e.target.dataset.left) {
       this.prevImg();
     }
+  }
+
+  componentDidMount() {
     this.intervalId = setInterval(this.next, 3000);
+
   }
 
   render() {
+
     // const images = this.props.images;
-    // let classNameIcon = '';
-    // if ()
+    // use map method to link img and dots ?
+    // return icon / img element???
+    // images.map(id => { ???
+    //   this.state.currentIndex === images.id;
+    //   return (
+    //  classNameIcon = 'fa-solid';
+    //   <img src={image[id - 1]} alt="pic"></img>
+
+    //   );
+
+    // });
+
     return (
       <div className="container">
         <div className="flex">
