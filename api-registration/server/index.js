@@ -37,7 +37,12 @@ app.post('/api/auth/sign-up', (req, res, next) => {
       const params = [username, hashedPassword];
       db.query(sql, params)
         .then(result => {
-          res.status(201).json(result.rows[0]);
+          const resultToShow = {
+            username: result.rows[0].username,
+            userId: result.rows[0].userId,
+            createdAt: result.rows[0].createdAt
+          };
+          res.status(201).json(resultToShow);
         })
         .catch(err => next(err));
     })
