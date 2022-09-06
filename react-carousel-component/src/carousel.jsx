@@ -58,9 +58,9 @@ export default class Carousel extends React.Component {
     // use map method to link img and dots ?
     // return icon / img element???
     // images.map(id => { ???
-    //   this.state.currentIndex === images.id;
+    //   this.state.currentIndex === images[id - 1]; ??
     //   return (
-    //  classNameIcon = 'fa-solid';
+    //    <i onClick={this.clickOn} data-icon="1" className="fa-solid fa-circle"></i>
     //   <img src={image[id - 1].url} alt="pic"></img>
 
     //   );
