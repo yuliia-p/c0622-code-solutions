@@ -3,6 +3,9 @@ import React from 'react';
 export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
+    // console.log('this.props.images', this.props.images);
+    // console.log('this.props.images.length', this.props.images.length);
+
     this.state = {
       intervalId: null,
       currentIndex: 0
@@ -14,8 +17,6 @@ export default class Carousel extends React.Component {
 
   next() {
     if (this.state.currentIndex === this.props.images.length - 1) {
-      // console.log('this.props.images.length', this.props.images.length);
-      // console.log('this.props.images', this.props.images);
       this.setState({ currentIndex: 0 });
     } else {
       this.setState({
@@ -46,15 +47,13 @@ export default class Carousel extends React.Component {
     } else if (e.target.dataset.left) {
       this.prevImg();
     }
+    this.intervalId = setInterval(this.next, 3000);
   }
 
   render() {
-    const images = this.props.images;
-
-    // });
-    if (images.id - 1 === this.state.currentIndex) {
-      return; // ???;
-    }
+    // const images = this.props.images;
+    // let classNameIcon = '';
+    // if ()
     return (
       <div className="container">
         <div className="flex">
