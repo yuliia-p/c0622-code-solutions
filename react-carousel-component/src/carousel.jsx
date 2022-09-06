@@ -61,7 +61,7 @@ export default class Carousel extends React.Component {
     //   this.state.currentIndex === images.id;
     //   return (
     //  classNameIcon = 'fa-solid';
-    //   <img src={image[id - 1]} alt="pic"></img>
+    //   <img src={image[id - 1].url} alt="pic"></img>
 
     //   );
 
