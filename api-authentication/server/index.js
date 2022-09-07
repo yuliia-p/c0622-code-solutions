@@ -59,6 +59,9 @@ app.post('/api/auth/sign-in', (req, res, next) => {
 
       /* your code starts here */
       const [user] = result.rows;
+      if (!user) {
+        throw new ClientError(401, 'user not found');
+      }
 
       argon2
         .verify(user.hashedPassword, password)
