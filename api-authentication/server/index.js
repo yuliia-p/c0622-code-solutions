@@ -60,7 +60,7 @@ app.post('/api/auth/sign-in', (req, res, next) => {
       /* your code starts here */
       const [user] = result.rows;
       if (!user) {
-        throw new ClientError(401, 'user not found');
+        throw new ClientError(401, 'invalid login');
       }
 
       argon2
