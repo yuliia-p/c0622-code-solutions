@@ -38,50 +38,58 @@ export default class Carousel extends React.Component {
   }
 
   clickOn(e) {
-    if (e.target.dataset.icon === this.props.images) {
-      this.setState({ currentIndex: this.state.currentIndex - 1 });
-    } else if (e.target.dataset.rigth) {
+    clearInterval(this.intervalId);
+    const index = e.target.dataset.icon;
+    // console.log('index', index);
+    if (e.target.classList.contains('fa-circle')) { // i want to use id
+      this.setState({ currentIndex: index }); // ?
+      // console.log(this.state);
+      // console.log('e.target', e.target);
+    } else
+    if (e.target.dataset.right) {
       this.next();
     } else if (e.target.dataset.left) {
       this.prevImg();
     }
+    this.intervalId = setInterval(this.next, 3000);
   }
 
   componentDidMount() {
     this.intervalId = setInterval(this.next, 3000);
-
   }
 
   render() {
 
-    // const images = this.props.images;
-    // use map method to link img and dots ?
-    // return icon / img element???
-    // images.map(id => { ???
-    //   this.state.currentIndex === images[id - 1]; ??
-    //   return (
-    //    <i onClick={this.clickOn} data-icon="1" className="fa-solid fa-circle"></i>
-    //   <img src={image[id - 1].url} alt="pic"></img>
-
-    //   );
-
-    // });
+    const images = this.props.images;
+    const imgEl = images.map((image, index) => {
+      return (
+        <img key={index} src={images[index].url} alt="pic" />
+      );
+    });
+    const dotEl = images.map((i, index) => {
+      // console.log('i', i);
+      // console.log('index', index);
+      if (index === this.state.currentIndex) {
+        return <i data-icon={index} onClick={this.clickOn} key={index} className="fa-solid fa-circle"></i>;
+      } else {
+        return <i data-icon={index} onClick={this.clickOn} key={index} className="fa-regular fa-circle"></i>;
+      }
+    });
 
     return (
+
       <div className="container">
         <div className="flex">
-          <i data-left="left" className="fa-solid fa-chevron-left"></i>
+          <i data-left="left" onClick={this.clickOn}
+          className="fa-solid fa-chevron-left"></i>
           <div className="image-holder">
-            <img src='../images/001.png' alt="pic"></img>
+            {imgEl}
           </div>
-          <i data-right="right" className="fa-solid fa-chevron-right"></i>
+          <i data-right="right" onClick={this.clickOn}
+          className="fa-solid fa-chevron-right"></i>
         </div>
         <div className="dot-holder">
-          <i onClick={this.clickOn} data-icon="1" className="fa-solid fa-circle"></i>
-          <i onClick={this.clickOn} data-icon="2" className="fa-regular fa-circle"></i>
-          <i onClick={this.clickOn} data-icon="3" className="fa-regular fa-circle"></i>
-          <i onClick={this.clickOn} data-icon="4" className="fa-regular fa-circle"></i>
-          <i onClick={this.clickOn} data-icon="5" className="fa-regular fa-circle"></i>
+          {dotEl}
         </div>
       </div>
     );
