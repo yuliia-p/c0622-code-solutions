@@ -3,7 +3,6 @@ import React from 'react';
 export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
-    // console.log('this.props.images', this.props.images);
     this.state = {
       currentIndex: 0,
       intervalId: null
@@ -24,8 +23,6 @@ export default class Carousel extends React.Component {
   }
 
   prevImg() {
-  // when currentIndex becomes 0, jump back to finish
-  // clear interval
     if (this.state.currentIndex === 0) {
       this.setState({
         currentIndex: this.props.images.length - 1
@@ -38,21 +35,21 @@ export default class Carousel extends React.Component {
   }
 
   clickOn(e) {
-    // clearInterval(this.intervalID);
+    clearInterval(this.intervalId);
     if (e.target.dataset.right) {
       this.next();
     } else if (e.target.dataset.left) {
       this.prevImg();
     } else if (e.target.classList.contains('fa-circle')) { // i want to use data-icon
-      const index = e.target.dataset.icon;
-      this.setState({ currentIndex: index }); // ?
+      const index = Number(e.target.dataset.icon);
+      this.setState({ currentIndex: index });
     }
-    // this.intervalId = setInterval(this.next, 3000);
+    this.intervalId = setInterval(this.next, 3000);
   }
 
-  // componentDidMount() {
-  //   this.intervalId = setInterval(this.next, 3000);
-  // }
+  componentDidMount() {
+    this.intervalId = setInterval(this.next, 3000);
+  }
 
   render() {
     const images = this.props.images;
@@ -62,11 +59,7 @@ export default class Carousel extends React.Component {
       );
     });
     const dotEl = images.map((i, index) => { // ???
-      // console.log('index', index);
-      // console.log('i', i);
       if (index === this.state.currentIndex) {
-        // console.log('index', index);
-        // console.log('currentIndex', this.state.currentIndex);
         return <i data-icon={index} onClick={e => this.clickOn(e)} key={index} className="fa-solid fa-circle"></i>;
       } else {
         return <i data-icon={index} onClick={e => this.clickOn(e)} key={index} className="fa-regular fa-circle"></i>;
@@ -74,7 +67,6 @@ export default class Carousel extends React.Component {
     });
 
     return (
-
       <div className="container">
         <div className="flex">
           <i data-left="left" onClick={e => this.clickOn(e)}
