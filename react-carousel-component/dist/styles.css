@@ -1,0 +1,18 @@
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dot-holder {
+  text-align: center;
+}
+
+.fa-circle {
+  margin: 0 0.5rem;
+}
+
+.fa-chevron-left,
+.fa-chevron-right {
+  font-size: 3rem;
+}
