@@ -1,1 +1,4 @@
-index.jsx
+User can sign up.
+User can sign in.
+User can stay signed in (even if they refresh the page).
+User can sign out.
