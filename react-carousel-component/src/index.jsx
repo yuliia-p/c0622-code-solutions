@@ -4,21 +4,23 @@ import React from 'react';
 
 const images = [
   {
-    // id: 1,
     url: '../images/001.png'
   }, {
-    // id: 2,
     url: '../images/004.png'
   }, {
-    // id: 3,
     url: '../images/007.png'
   }, {
-    // id: 4,
     url: '../images/025.png'
   }, {
-    // id: 5,
     url: '../images/039.png'
   }
+  // ,
+  // {
+  //   url: '../images/045.jpg'
+  // },
+  // {
+  //   url: '../images/050.jpg'
+  // }
 ];
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));

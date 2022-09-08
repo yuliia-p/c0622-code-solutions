@@ -5,8 +5,8 @@ export default class Carousel extends React.Component {
     super(props);
     // console.log('this.props.images', this.props.images);
     this.state = {
-      intervalId: null,
-      currentIndex: 0
+      currentIndex: 0,
+      intervalId: null
     };
     this.clickOn = this.clickOn.bind(this);
     this.next = this.next.bind(this);
@@ -38,41 +38,38 @@ export default class Carousel extends React.Component {
   }
 
   clickOn(e) {
-    clearInterval(this.intervalId);
-    const index = e.target.dataset.icon;
-    // console.log('index', index);
-    if (e.target.classList.contains('fa-circle')) { // i want to use id
-      this.setState({ currentIndex: index }); // ?
-      // console.log(this.state);
-      // console.log('e.target', e.target);
-    } else
+    // clearInterval(this.intervalID);
     if (e.target.dataset.right) {
       this.next();
     } else if (e.target.dataset.left) {
       this.prevImg();
+    } else if (e.target.classList.contains('fa-circle')) { // i want to use data-icon
+      const index = e.target.dataset.icon;
+      this.setState({ currentIndex: index }); // ?
     }
-    this.intervalId = setInterval(this.next, 3000);
+    // this.intervalId = setInterval(this.next, 3000);
   }
 
-  componentDidMount() {
-    this.intervalId = setInterval(this.next, 3000);
-  }
+  // componentDidMount() {
+  //   this.intervalId = setInterval(this.next, 3000);
+  // }
 
   render() {
-
     const images = this.props.images;
     const imgEl = images.map((image, index) => {
       return (
-        <img key={index} src={images[index].url} alt="pic" />
+      <img key={index} src={images[index].url} alt="pic" />
       );
     });
-    const dotEl = images.map((i, index) => {
-      // console.log('i', i);
+    const dotEl = images.map((i, index) => { // ???
       // console.log('index', index);
+      // console.log('i', i);
       if (index === this.state.currentIndex) {
-        return <i data-icon={index} onClick={this.clickOn} key={index} className="fa-solid fa-circle"></i>;
+        // console.log('index', index);
+        // console.log('currentIndex', this.state.currentIndex);
+        return <i data-icon={index} onClick={e => this.clickOn(e)} key={index} className="fa-solid fa-circle"></i>;
       } else {
-        return <i data-icon={index} onClick={this.clickOn} key={index} className="fa-regular fa-circle"></i>;
+        return <i data-icon={index} onClick={e => this.clickOn(e)} key={index} className="fa-regular fa-circle"></i>;
       }
     });
 
@@ -80,12 +77,12 @@ export default class Carousel extends React.Component {
 
       <div className="container">
         <div className="flex">
-          <i data-left="left" onClick={this.clickOn}
+          <i data-left="left" onClick={e => this.clickOn(e)}
           className="fa-solid fa-chevron-left"></i>
           <div className="image-holder">
-            {imgEl}
+            {imgEl[this.state.currentIndex]}
           </div>
-          <i data-right="right" onClick={this.clickOn}
+          <i data-right="right" onClick={e => this.clickOn(e)}
           className="fa-solid fa-chevron-right"></i>
         </div>
         <div className="dot-holder">
