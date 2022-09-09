@@ -1,4 +1,88 @@
-User can sign up.
-User can sign in.
-User can stay signed in (even if they refresh the page).
-User can sign out.
+1. Browser req our html file, which has links to bootstrap with styling, and script tad with main.js.
+2. Server receives req for main.js. Webpack will take all the modules and combine them together - in main.js
+3. Browser starts to execute frontend code.
+4. Entry point - index.js:
+- Importing react, reactdom, app from packages and modules
+- Accessing our div #root from html
+- Creating container
+- Telling react to mount our App
+- App is starting
+
+5. App.jsx:
+- Importing react from package
+- jwtDecode from package                        // to decode, verify and generate tokens
+- AppContext from './lib/app-context' module    // provides data to components
+- parseRoute from './lib/parse-route' module    // see below - used to switch a views
+- Auth from './pages/auth' module
+- Home from './pages/home' module
+- NotFound from './pages/not-found' module
+- Navbar from './components/navbar' module
+- PageContainer from './components/page-container' module
+
+We are defining class App (which extends from React.Component and being exporting by default). App has its construction function. State is set.
+Render runs:
+1. Checks the state
+2. Sets contextValues
+3. Returns:
+- AppContext with Provider React component => imported from AppContext './lib/app-context' => in app-context.js we creating a context instance and exporting it by default
+- Navbar component =>
+  - In Navbar class component we are rendering some react elements and accsessing  properties from context property (which we “defined/assigned” in app “const contextValue = { user, route, handleSignIn, handleSignOut }”).
+  - In render() we are checking if user is null => show Sign In and Sign Up buttons, if not => show Sign out
+  - After rendering we are going back to App
+- PageContainer component “is being called with one arg”. Going to page-container.jsx:
+  - Function PageContainer is defined with one parameter and returning react el with given argument. + we have some styling assigned to const styles. Going back to App
+- Calls the renderPage() of this obj - is a javascript expression which is passed to PageContainer => renderPage() method:
+  - route is parsed (with parseRoute in ./lib/parse-route => returns an obj:
+    - Checks if contains #, chops it off and splits on “?” one section before ‘?’ = path (string), second one = queryString)
+    - Using URLSearchParams for “getting” key value pairs from queryString
+  - Checks if our path is empty str if it is, shows Home component (home page). Going to home.jsx =>
+    - We have some styling assigned to const styles and being applied later
+    - Class Home is being defined (which extends from React.Component and being exporting by default)
+    -  Checks if user (from context) is trufy
+    - If yes, returns react el with styling (javascript expression)
+    - If not - returns Redirect component with “to” props = to str “sign-in”
+        - Redirect in ../components/redirect holds a function Redirect (which is being exporting by default) with one parameter props.
+        - Checks if property of “to” (passed argument in home.jsx) is empty str, if yes - assign # to hash property of url obj. If no - assign value of ‘to’ to url.hash
+    - Then use replace method to on window location with new url to redirect user
+  - Check if path is sign-in or sign-up, if so return Auth component =>
+    - Auth imports a bunch of necessary modules and react package
+    - And a class Auth is being defined (which extends from React.Component and being exporting by default)
+    - In the class body we again accessing and assigning properties from context to use (const { user, route, handleSignIn } = this.context)
+    - Checking if user signed in - show http://localhost:3000/# (with Redirect fun see above).
+    - We are creating welcome message to show: if path “sign-in” - Please sign in to continue, if not - then (“sign—up”) - Create an account to get started!
+    -  Returning react el with AuthForm component with props - key={route.path} action={route.path} onSignIn={handleSignIn}
+      - Going to AuthForm in ‘../components/auth-form’:
+          - Importing react from package and AppContext to access necessary values
+          - Constructor fun is called with props and super fun is called. State is set to username and password as empty strings
+          - Render method is next.
+            - We are destructuring props property for action value. And also for  handleChange, handleSubmit from this obj.
+              - We checking if const action is === to “sign—up”, if yes assign new value of “sign-in” to const alternateActionHref, if not - assign “sign—up”.
+              - We checking if const action is === to “sign—up”, if yes assign new value of “Sign in instead” to a const alternatActionText, if not -  assign “Register now”
+              - We checking if const action is === to “sign—up”, if yes assign new value of 'Register' to const submitButtonText, if not -  assign str 'Log In'
+              - And then we returning react el type form, with a onSubmit={handleSubmit}
+                - In which we are destructuring props property for action value
+                - Setting our request obj with method post, and header , and with JSON.stringify in body
+                - Fetch will send request to /api/auth/ and the value of action we are on => server starts - index.js runs one time:
+                  - App.listen starts and listens for requests
+                  - errorMiddleware is “imported” and in use
+                  - …
+                  - We enter callback for post for either /api/auth/sign-up or /api/auth/sign-in depends on the value is const action
+                  - We creating the sql str with userId, hashedPassword, if user is signing in.
+                      - And we query our database with arguments of username and sql str
+                        - When server receives a reply from database we destructuring array of result row and assigning value to user const.
+                        - If user is falsy , we are throwing an error, which takes us to error-middleware.js:
+                            - There we assign value to JsonWebTokenError, which is a return from a require fun with jsonwebtoken package argument
+                            - And we assign value of a return of a require fun with './client-error' arg to a const ClientError
+                            - In errorMiddleware fun with four args which is taking care of all errors // sorry I can’t anymore
+                            - With argon2 we are comparing hashed password with password given by user
+                            - If it is not matching - we throw error
+                            - If it is matches - we are creating payload obj with userId and username
+                            - After jwt.sign() uses the data in the payload, and the TOKEN_SECRET value from .env to create a token.
+                            - Token, user (as payload obj) are send as response from database to server
+                        - If value of action is sign-up:
+                            - We making sure username and password are provided, if not - error is thrown
+                            - With argon2 we hashing the password
+                            - Creating sql str with insert method, choosing the table and “columns”, placing two placeholders for values (username, hashedPassword)
+                            - After server query database
+                            - Result is sent back as “user” (with  "userId", "username", "createdAt")
+                - If user was singing in and a token and a user are trufy => this.props.onSignIn(result) //???
