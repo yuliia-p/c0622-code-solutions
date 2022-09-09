@@ -19,15 +19,18 @@
 - Navbar from './components/navbar' module
 - PageContainer from './components/page-container' module
 
-We are defining class App (which extends from React.Component and being exporting by default). App has its construction function. State is set.
+We are defining class App (which extends from React.Component and being exported by default). App has its construction function. State is set.
 Render runs:
 1. Checks the state
 2. Sets contextValues
 3. Returns:
-- AppContext with Provider React component => imported from AppContext './lib/app-context' => in app-context.js we creating a context instance and exporting it by default
+- AppContext with Provider React component => imported from AppContext './lib/app-context' => in app-context.js we creating a context instance and exported it by default
 - Navbar component =>
   - In Navbar class component we are rendering some react elements and accsessing  properties from context property (which we “defined/assigned” in app “const contextValue = { user, route, handleSignIn, handleSignOut }”).
-  - In render() we are checking if user is null => show Sign In and Sign Up buttons, if not => show Sign out
+  - In render() we are checking if user is null => show Sign In and Sign Up buttons, if not => show Sign out:
+    - method handleSignOut is passed from App.jsx with context
+    - called when button is clicked
+    - handleSignOut method removes data from local storage => and sets new state => App.jsx rerenders
   - After rendering we are going back to App
 - PageContainer component “is being called with one arg”. Going to page-container.jsx:
   - Function PageContainer is defined with one parameter and returning react el with given argument. + we have some styling assigned to const styles. Going back to App
@@ -37,20 +40,23 @@ Render runs:
     - Using URLSearchParams for “getting” key value pairs from queryString
   - Checks if our path is empty str if it is, shows Home component (home page). Going to home.jsx =>
     - We have some styling assigned to const styles and being applied later
-    - Class Home is being defined (which extends from React.Component and being exporting by default)
+    - Class Home is being defined (which extends from React.Component and being exported by default)
     -  Checks if user (from context) is trufy
     - If yes, returns react el with styling (javascript expression)
     - If not - returns Redirect component with “to” props = to str “sign-in”
-        - Redirect in ../components/redirect holds a function Redirect (which is being exporting by default) with one parameter props.
+        - Redirect in ../components/redirect holds a function Redirect (which is being exported by default) with one parameter props.
         - Checks if property of “to” (passed argument in home.jsx) is empty str, if yes - assign # to hash property of url obj. If no - assign value of ‘to’ to url.hash
     - Then use replace method to on window location with new url to redirect user
   - Check if path is sign-in or sign-up, if so return Auth component =>
     - Auth imports a bunch of necessary modules and react package
-    - And a class Auth is being defined (which extends from React.Component and being exporting by default)
+    - And a class Auth is being defined (which extends from React.Component and being exported by default)
     - In the class body we again accessing and assigning properties from context to use (const { user, route, handleSignIn } = this.context)
     - Checking if user signed in - show http://localhost:3000/# (with Redirect fun see above).
     - We are creating welcome message to show: if path “sign-in” - Please sign in to continue, if not - then (“sign—up”) - Create an account to get started!
-    -  Returning react el with AuthForm component with props - key={route.path} action={route.path} onSignIn={handleSignIn} // handleSignIn was passed through context, and assign to onSignIn prop of AuthForm
+    -  Returning react el with AuthForm component with props - key={route.path} action={route.path} onSignIn={handleSignIn} - with value of handleSignIn() defined in App.jsx ans passed with context =>
+      - handleSignIn method WILL “take” user and token from result obj in fetch requst (see below) - and store it local storage - will set state in App.jsx => and WILL RENDER again (the matching pages and buttons are shown)
+
+     // handleSignIn was passed through context, and assign to onSignIn prop of AuthForm
       - Going to AuthForm in ‘../components/auth-form’:
           - Importing react from package and AppContext to access necessary values
           - Constructor fun is called with props and super fun is called. State is set to username and password as empty strings
@@ -97,6 +103,6 @@ App.lsx - componentDidMount!!!
  - Now we are listening for ‘hashchange event’, if hash changes we reset the state and render again.
   - We are getting token from local storage
     - If where is a token - we are decoding it not - null
-  - After we set the status again to user data (dec token) and isAuthorizing to false => render method
-  - handleSignIn method is “taking” user and token from result obj - and stores it local storage - sets state => renders again (the matching pages and buttons are shown)
-  - handleSignOut method removes data from local storage
+  - After we set the status again to user data (dec token) and isAuthorizing to false =>
+  App renders
+And finaly App component is mounted to the #root (it will render again if user interacts with the page - sing up, sing in, sing out).
