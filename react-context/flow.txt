@@ -50,7 +50,7 @@ Render runs:
     - In the class body we again accessing and assigning properties from context to use (const { user, route, handleSignIn } = this.context)
     - Checking if user signed in - show http://localhost:3000/# (with Redirect fun see above).
     - We are creating welcome message to show: if path “sign-in” - Please sign in to continue, if not - then (“sign—up”) - Create an account to get started!
-    -  Returning react el with AuthForm component with props - key={route.path} action={route.path} onSignIn={handleSignIn}
+    -  Returning react el with AuthForm component with props - key={route.path} action={route.path} onSignIn={handleSignIn} // handleSignIn was passed through context, and assign to onSignIn prop of AuthForm
       - Going to AuthForm in ‘../components/auth-form’:
           - Importing react from package and AppContext to access necessary values
           - Constructor fun is called with props and super fun is called. State is set to username and password as empty strings
@@ -85,4 +85,18 @@ Render runs:
                             - Creating sql str with insert method, choosing the table and “columns”, placing two placeholders for values (username, hashedPassword)
                             - After server query database
                             - Result is sent back as “user” (with  "userId", "username", "createdAt")
-                - If user was singing in and a token and a user are trufy => this.props.onSignIn(result) //???
+                 - If user was singing in and a token and a user are trufy => this.props.onSignIn(result) //??? Result of request is passed as arg to onSignIn method. ??
+            - Form inputs have onChange handlers with handleChange =>
+            - In this method we are listen for inputs from user (username and password)
+            - If event happens we are assigning value of input the state with setState, which will rerender our form
+          - And few javascript expression passed in the react el (see above which)
+  - Else return NotFound component =>
+    - Here we have some styling to apply ro react el
+    - Component renders el with Not found text, and renders anchor el with ‘view’ of a homescreen href="#"
+App.lsx - componentDidMount!!!
+ - Now we are listening for ‘hashchange event’, if hash changes we reset the state and render again.
+  - We are getting token from local storage
+    - If where is a token - we are decoding it not - null
+  - After we set the status again to user data (dec token) and isAuthorizing to false => render method
+  - handleSignIn method is “taking” user and token from result obj - and stores it local storage - sets state => renders again (the matching pages and buttons are shown)
+  - handleSignOut method removes data from local storage
