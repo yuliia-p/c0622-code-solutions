@@ -1,14 +1,14 @@
 /* exported uniqueQuadratic, uniqueLinear */
 
 function uniqueLinear(words) {
-  const seen = {};                  // 1 * 1 = O(1)
+  const seen = {};                  // 1 * 1 = O(1) // constant time
   const unique = [];                // 1 * 1 = O(1)
   for (
     let i = 0;                      // 1 * 1 = O(1)
-    i < words.length;               // 2 * n = O(2n)
-    i++                             // 2 * n = O(2n)
+    i < words.length;               // 2 * n = O(2n) // property acsses and comperison - linear time
+    i++                             // 2 * n = O(2n) // + and assigment - linear time
   ) {
-    const word = words[i];          // 2 * n = O(2n)
+    const word = words[i];          // 2 * n = O(2n) // index acsses and assigment, inside loop and n times - linear time
     if (!seen[word]) {              // 3 * n = O(3n)
       seen[word] = true;            // 2 * n = O(2n)
       unique[unique.length] = word; // 3 * n = O(3n)
@@ -25,8 +25,8 @@ function uniqueQuadratic(words) {
     i++                             // 2 * n = O(2n)
   ) {
     const word = words[i];          // 2 * n = O(2n)
-    let isUnique = true;            // 1 * 1 = O(1)
-    for (
+    let isUnique = true;            // 1 * n = O(n)
+    for (                           // NESTED LOOP!!!
       let c = 0;                    // 1 * n = O(n)
       c < i;                        // 1 * n * n = O(n^2) ?
       c++                           // 2 * n * n = O(2n^2) ?
