@@ -28,15 +28,15 @@ function uniqueQuadratic(words) {
     let isUnique = true;            // 1 * n = O(n)
     for (                           // NESTED LOOP!!!
       let c = 0;                    // 1 * n = O(n)
-      c < i;                        // 2 * n * n = O(n^2) ?
-      c++                           // 2 * n * n = O(2n^2) ?
+      c < i;                        // 2 * n * n = O(2n^2) // quadractic time
+      c++                           // 2 * n * n = O(2n^2) // quadractic time
     ) {
-      const comparing = words[c];   // 2 * n * n = O(2n)
+      const comparing = words[c];   // 2 * n * n = O(2n^2)
       if (comparing === word) {     // 1 * n * n = O(n^2)
         isUnique = false;           // 1 * n * n = O(n^2)
       }
     }
-    if (isUnique) {                 // 1 * n = O(1)
+    if (isUnique) {                 // 1 * n = O(n)
       unique[unique.length] = word; // 3 * n = O(3n^2)
     }
   }
