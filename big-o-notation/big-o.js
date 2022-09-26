@@ -28,7 +28,7 @@ function uniqueQuadratic(words) {
     let isUnique = true;            // 1 * n = O(n)
     for (                           // NESTED LOOP!!!
       let c = 0;                    // 1 * n = O(n)
-      c < i;                        // 1 * n * n = O(n^2) ?
+      c < i;                        // 2 * n * n = O(n^2) ?
       c++                           // 2 * n * n = O(2n^2) ?
     ) {
       const comparing = words[c];   // 2 * n * n = O(2n)
