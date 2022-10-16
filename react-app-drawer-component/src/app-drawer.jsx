@@ -8,11 +8,7 @@ export default class AppDrawer extends React.Component {
   }
 
   handleClick() {
-    if (!this.state.menuView) {
-      this.setState({ menuView: true });
-    } else if (this.state.menuView) {
-      this.setState({ menuView: false });
-    }
+    !this.state.menuView ? this.setState({ menuView: true }) : this.setState({ menuView: false });
   }
 
   render() {
